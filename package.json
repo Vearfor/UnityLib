@@ -1,0 +1,18 @@
+{
+  "name": "com.tauriland.libreria",
+  "version": "1.0.0",
+  "displayName": "Libreria Comun",
+  "description": "Funciones, utilidades y clases compartidas para varios proyectos Unity.",
+  "unity": "2021.3",
+  "author": {
+    "name": "Enrique Rocafull Ortiz",
+    "email": "erocafull@hotmail.com"
+  },
+  "keywords": [
+    "utilities",
+    "shared",
+    "common",
+    "bluetooth",
+    "network"
+  ]
+}

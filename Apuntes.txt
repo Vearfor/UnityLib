@@ -1,0 +1,14 @@
+
+Ejemplos:
+
+MiLibreria/
+├── package.json
+├── Runtime/
+│   ├── Libreria.asmdef
+│   ├── Utilidades.cs
+│   └── BluetoothHelper.cs
+└── Editor/
+    ├── Libreria.Editor.asmdef
+    └── VentanaDebug.cs
+
+que habra que probar
