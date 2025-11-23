@@ -15,13 +15,16 @@ que habra que probar
 
 Guardo aqui el resto de las opciones:
 
- - cuando lo vayamos a pasar debe de estar enn GitHub
-    "com.tauriland.libreria": "https://github.com/Vearfor/UnityLib.git",
-	
 	// Probando si funciona:
 	// los json: no admiten comentarios
     "com.tauriland.libreria": "file:C:/Actual/Curso/Tokio/Unity Projects/UnityLib",
+	// Funciona
     "com.tauriland.libreria": "file:../../UnityLib",
+	
+ - cuando lo vayamos a pasar debe de estar enn GitHub
+	// Probamos con GitHub
+    "com.tauriland.libreria": "https://github.com/Vearfor/UnityLib.git",
+	
 
 
 
