@@ -18,5 +18,51 @@ Guardo aqui el resto de las opciones:
  - cuando lo vayamos a pasar debe de estar enn GitHub
     "com.tauriland.libreria": "https://github.com/Vearfor/UnityLib.git",
 	
+	// Probando si funciona:
+	// los json: no admiten comentarios
     "com.tauriland.libreria": "file:C:/Actual/Curso/Tokio/Unity Projects/UnityLib",
+    "com.tauriland.libreria": "file:../../UnityLib",
+
+
+
+No tengo un UnityLib.asmdef,
+en origen llamé a mi libreria simplemente "Libreria", y por ello existe un Libreria.asmdef
+que es:
+{
+    "name": "Libreria",
+    "rootNamespace": "tauriland.Libreria",
+    "references": [
+        "GUID:75469ad4d38634e559750d17036d5f7c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
+
+y el package.json es:
+{
+  "name": "com.tauriland.libreria",
+  "version": "1.0.0",
+  "displayName": "Libreria Comun",
+  "description": "Funciones, utilidades y clases compartidas para varios proyectos Unity.",
+  "unity": "2021.3",
+  "author": {
+    "name": "Enrique Rocafull Ortiz",
+    "email": "erocafull@hotmail.com"
+  },
+  "keywords": [
+    "utilities",
+    "shared",
+    "common",
+    "bluetooth",
+    "network"
+  ]
+}
+
 

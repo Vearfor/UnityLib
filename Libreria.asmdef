@@ -2,7 +2,10 @@
     "name": "Libreria",
     "rootNamespace": "tauriland.Libreria",
     "references": [
-        "GUID:75469ad4d38634e559750d17036d5f7c"
+		"UnityEngine.CoreModule",
+		"UnityEngine.UI",
+		"Unity.TextMeshPro",
+		"Unity.InputSystem"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
