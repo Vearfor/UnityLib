@@ -12,3 +12,11 @@ MiLibreria/
     └── VentanaDebug.cs
 
 que habra que probar
+
+Guardo aqui el resto de las opciones:
+
+ - cuando lo vayamos a pasar debe de estar enn GitHub
+    "com.tauriland.libreria": "https://github.com/Vearfor/UnityLib.git",
+	
+    "com.tauriland.libreria": "file:C:/Actual/Curso/Tokio/Unity Projects/UnityLib",
+
