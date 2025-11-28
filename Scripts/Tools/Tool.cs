@@ -109,23 +109,29 @@ public class Tool : MonoBehaviour
     {
         LogColor("Awake Tool: [" + gameObject.name + "]", Color.cyan);
         DebugBreak();
-
-        string sDir = Directory.GetCurrentDirectory();
-        programName = Path.GetFileName(sDir);
-        Init("Files", programName, true);
-        Log(" Inicio de [" + programName + "]\n");
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         LogColor("Start Tool: [" + gameObject.name + "]", Color.cyan);
+
+        //------------------------------------------------------------------
+        // Las inicializaciones fuera de Tool hay que hacerlas en Awake
+        // Y aqui despues de levantados los flags en Awakes ajenos
+        // hacemos las inicializaciones de Tools en el Start.
+        //------------------------------------------------------------------
+        string sDir = Directory.GetCurrentDirectory();
+        programName = Path.GetFileName(sDir);
+        Init("Files", programName, true);
+        Log(" Inicio de [" + programName + "]\n");
     }
 
     // Update is called once per frame
     void Update()
     {
         controlEscape();
+        controlTeclaRepetida(Time.deltaTime);
     }
 
     void OnDestroy()

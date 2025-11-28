@@ -1,3 +1,5 @@
+// using Codice.Client.BaseCommands.BranchExplorer;
+using System;
 using UnityEngine;
 
 public class PlaySound : MonoBehaviour
@@ -6,6 +8,13 @@ public class PlaySound : MonoBehaviour
     //----------------------------------------------------------------------
     // Variables
     //----------------------------------------------------------------------
+    //----------------------------------------------------------------------
+    // Vamos a experimentar con un audio source propio
+    // No dependera del gameObject al cual se asocie.
+    // Espero con ello que se mantenga un AudiSource activo entre escenas
+    //----------------------------------------------------------------------
+    public static AudioSource staticAudioSource = null;
+
     //----------------------------------------------------------------------
     // Audio source para los efectos sonoros
     // - en este programa es el audio source del MainCanvas
@@ -26,26 +35,7 @@ public class PlaySound : MonoBehaviour
     public static bool isActivateBakcgroundSound = false;
     public static bool isPaused = false;
 
-    public enum eFxClip
-    {
-        Transitions = 0,    // Transiciones
-        WinGame = 1,        // Ganamos el juego
-        Applause = 2,       // Aplauso de tanto
-        LoseGame = 3,       // Perdemos el juego contra IA, me falta implementar
-        Rebote = 4,         // Rebote en pared
-        Golpe = 5,          // Golpe de raqueta
-        ScorePoint = 6,     // Punto conseguido
-        PowerUp = 7,        // PowerUp activado
-        NumClips = 8        // Numero de clips
-    }
-
-    public enum eFondoClip
-    {
-        Murmullos = 0,      // Transiciones
-        Generic = 1,        // Ganamos el juego
-        NumFondos = 2       // Numero de clips
-    }
-
+    public static AudioClip[] listaAudioClip;
     public static AudioClip[] listaFxAudioClip;
     public static AudioClip[] listaFondoAudioClip;
     //----------------------------------------------------------------------
@@ -58,7 +48,11 @@ public class PlaySound : MonoBehaviour
     public void Awake()
     {
         Tool.LogColor("Awake PlaySound [" + name + "]", Color.green);
-        audioFxSource = GetComponent<AudioSource>();
+
+        if (staticAudioSource == null)
+        {
+            staticAudioSource = new AudioSource();
+        }
     }
 
     public void OnEnable()
@@ -73,29 +67,52 @@ public class PlaySound : MonoBehaviour
     |* Metodos / Funciones Propias
     \*--------------------------------------------------------------------*/
     //----------------------------------------------------------------------
-    // Carga desde Resources que no estamos usando
+    // no lo cargamos aqui sino en el gameobject que le asocia.
+    // se carga la lista en el editor y lugo se pasa por esta funcion
     //----------------------------------------------------------------------
-    public static void InitAudioClips()
+    public static void InitClips(AudioClip[] lista)
     {
-        listaFxAudioClip = new AudioClip[7];
-        listaFxAudioClip[(int)eFxClip.Transitions] = Resources.Load<AudioClip>("Audio/Transitions");
-        listaFxAudioClip[(int)eFxClip.WinGame] = Resources.Load<AudioClip>("Audio/WinGame");
-        listaFxAudioClip[(int)eFxClip.LoseGame] = Resources.Load<AudioClip>("Audio/LoseGame");
-        listaFxAudioClip[(int)eFxClip.Rebote] = Resources.Load<AudioClip>("Audio/Rebote");
-        listaFxAudioClip[(int)eFxClip.Golpe] = Resources.Load<AudioClip>("Audio/Golpe");
-        listaFxAudioClip[(int)eFxClip.ScorePoint] = Resources.Load<AudioClip>("Audio/ScorePoint");
-        listaFxAudioClip[(int)eFxClip.PowerUp] = Resources.Load<AudioClip>("Audio/PowerUp");
+        listaAudioClip = lista;
     }
 
     //----------------------------------------------------------------------
-    // no lo cargamos aqui sino en el gameobject que le asocia.
-    // se carga la lista en el editor y lugo se pasa por esta funcion
+    // Y el play con nuestro AudioSource.
+    // Creado como statc dentro de Playsound
+    // y utilizando una lista de clips que nos habran informado en la
+    // funcion anterior.
+    //----------------------------------------------------------------------
+    public static void PlayClip(int index)
+    {
+        if (isActiveSounds && staticAudioSource)
+        {
+            try
+            {
+                if (index > -1 && index < listaAudioClip.Length)
+                {
+                    AudioClip clipToPlay = listaAudioClip[index];
+                    if (clipToPlay != null)
+                        staticAudioSource.PlayOneShot(clipToPlay);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                Tool.LogColor(" PlaySound.PlayClip: [" + ex.Message + "]", Color.red);
+            }
+        }
+    }
+
+
+    //----------------------------------------------------------------------
+    // La lista de los efectos sonoros
     //----------------------------------------------------------------------
     public static void InitFxClips(AudioClip[] lista)
     {
         listaFxAudioClip = lista;
     }
 
+    //----------------------------------------------------------------------
+    // La lista de la musica de fondo
+    //----------------------------------------------------------------------
     public static void InitFondoClips(AudioClip[] lista)
     {
         listaFondoAudioClip = lista;
@@ -104,15 +121,18 @@ public class PlaySound : MonoBehaviour
     //----------------------------------------------------------------------
     // Y con esta se ejecutan los efectos sonoros
     //----------------------------------------------------------------------
-    public static void PlayFxClip(eFxClip clip)
+    public static void PlayFxClip(int index)
     {
         if (isActiveSounds)
         {
             try
             {
-                AudioClip clipToPlay = listaFxAudioClip[(int)clip];
-                if (clipToPlay != null)
-                    audioFxSource.PlayOneShot(clipToPlay);
+                if (index > -1 && index < listaFxAudioClip.Length)
+                {
+                    AudioClip clipToPlay = listaFxAudioClip[index];
+                    if (clipToPlay != null)
+                        audioFxSource.PlayOneShot(clipToPlay);
+                }
             }
             catch (System.Exception ex)
             {
@@ -126,19 +146,35 @@ public class PlaySound : MonoBehaviour
         audioFxSource = source;
     }
 
-    public static void PlayFondoClip(eFondoClip clip)
+
+    //----------------------------------------------------------------------
+    // asociamos el audiosource con la musica de fondo cargada desde el
+    // editor.
+    //----------------------------------------------------------------------
+    public static void SetAudioBackgoundSource(AudioSource source)
+    {
+        audioBackgroundSource = source;
+    }
+
+    //----------------------------------------------------------------------
+    // Si lo asociamos a una lista:
+    //----------------------------------------------------------------------
+    public static void PlayFondoClip(int index)
     {
         if (isActivateBakcgroundSound)
         {
             try
             {
-                AudioClip clipToPlay = listaFondoAudioClip[(int)clip];
-                if (clipToPlay != null)
-                    audioBackgroundSource.PlayOneShot(clipToPlay);
+                if (index > -1 && index < listaFxAudioClip.Length)
+                {
+                    AudioClip clipToPlay = listaFondoAudioClip[index];
+                    if (clipToPlay != null)
+                        audioBackgroundSource.PlayOneShot(clipToPlay);
+                }
             }
             catch (System.Exception ex)
             {
-                Tool.LogColor(" PlaySound.PlayFxClip: [" + ex.Message + "]", Color.red);
+                Tool.LogColor(" PlaySound.PlayFondoClip: [" + ex.Message + "]", Color.red);
             }
         }
     }
@@ -197,15 +233,6 @@ public class PlaySound : MonoBehaviour
                 Tool.LogColor(" PlaySound.Pause: [" + ex.Message + "]", Color.red);
             }
         }
-    }
-
-    //----------------------------------------------------------------------
-    // asociamos el audiosource con la musica de fondo cargada desde el
-    // editor.
-    //----------------------------------------------------------------------
-    public static void SetAudioBackgoundSource(AudioSource source)
-    {
-        audioBackgroundSource = source;
     }
     //----------------------------------------------------------------------
     #endregion
