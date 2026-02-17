@@ -225,6 +225,9 @@ namespace TauriLand.Libreria
 		#region Pulsada cualquier tecla o raton
         //----------------------------------------------------------------------
 		// Input nuevo
+        // if (Keyboard.current.anyKey.isPressed || Mouse.current.IsPressed())
+        // if (Input.anyKeyDown)    // Este es con el Input antiguo
+        // Con el nuevo:
         //----------------------------------------------------------------------
 		public static bool anyInput()
 		{
@@ -236,6 +239,7 @@ namespace TauriLand.Libreria
         }
         //----------------------------------------------------------------------
 		#endregion
+
 
         #region Salir
         //----------------------------------------------------------------------
@@ -418,7 +422,7 @@ namespace TauriLand.Libreria
             catch (System.Exception ex)
             {
                 // throw new Exception(ex.Message, ex);
-                LogColor("Exception: CreateDirectory: [" + ex.Message + "]", Color.red);
+                LogColor("Exception: CreateDirectory: [" + ex.Message + "]", Color.yellow);
                 return -1;
             }
             return 0;
@@ -435,7 +439,7 @@ namespace TauriLand.Libreria
             }
             catch (System.Exception ex)
             {
-                LogColor("Exception: CreateLogFile: [" + ex.Message + "]", Color.red);
+                LogColor("Exception: CreateLogFile: [" + ex.Message + "]", Color.yellow);
                 return -1;
             }
             return 0;
