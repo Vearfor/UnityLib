@@ -222,6 +222,21 @@ namespace TauriLand.Libreria
         #endregion
 
 
+		#region Pulsada cualquier tecla o raton
+        //----------------------------------------------------------------------
+		// Input nuevo
+        //----------------------------------------------------------------------
+		public static bool anyInput()
+		{
+			return 
+				Keyboard.current.anyKey.isPressed ||
+				Mouse.current.leftButton.isPressed ||
+				Mouse.current.rightButton.isPressed ||
+				Mouse.current.middleButton.isPressed;
+        }
+        //----------------------------------------------------------------------
+		#endregion
+
         #region Salir
         //----------------------------------------------------------------------
         // Funcion para salir comun a todos los programas
