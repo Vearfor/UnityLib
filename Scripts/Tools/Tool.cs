@@ -596,6 +596,24 @@ namespace TauriLand.Libreria
         //----------------------------------------------------------------------
         #endregion
 
+
+        #region Booleana en PlayerPrefs
+        //----------------------------------------------------------------------
+        // Booleana con PlayerPrefs
+        //----------------------------------------------------------------------
+        public static bool getBool(string key, bool defaultValue = false)
+        {
+            int value = PlayerPrefs.GetInt(key, defaultValue ? 1 : 0);
+            return value == 1;
+        }
+
+        public static void setBool(string key, bool value)
+        {
+            int valueInt = value ? 1 : 0;
+            PlayerPrefs.SetInt(key, valueInt);
+        }
+        #endregion
+
         //----------------------------------------------------------------------
         #endregion
 
