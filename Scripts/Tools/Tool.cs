@@ -137,7 +137,7 @@ namespace TauriLand.Libreria
         //----------------------------------------------------------------------
 		public static bool anyKey
 		{
-			get { return Keyboard.current.anyKey.isPressed }
+			get { return Keyboard.current.anyKey.isPressed; }
 		}
         //----------------------------------------------------------------------
 		public static bool mouseLeftButton
