@@ -100,26 +100,64 @@ namespace TauriLand.Libreria
         //----------------------------------------------------------------------
         static sMonth[] months =
         {
-        new sMonth { monthNumDays = 31, monthName = "enero" },
-        new sMonth { monthNumDays = 28, monthName = "febrero" },    // No vamos a tener en cuenta los bisiestos
-        new sMonth { monthNumDays = 31, monthName = "marzo" },
-        new sMonth { monthNumDays = 30, monthName = "abril" },
-        new sMonth { monthNumDays = 31, monthName = "mayo" },
-        new sMonth { monthNumDays = 30, monthName = "junio" },
-        new sMonth { monthNumDays = 31, monthName = "julio" },
-        new sMonth { monthNumDays = 31, monthName = "agosto" },
-        new sMonth { monthNumDays = 30, monthName = "septiembre" },
-        new sMonth { monthNumDays = 31, monthName = "octubre" },
-        new sMonth { monthNumDays = 30, monthName = "noviembre" },
-        new sMonth { monthNumDays = 31, monthName = "diciembre" },
-    };
+			new sMonth { monthNumDays = 31, monthName = "enero" },
+			new sMonth { monthNumDays = 28, monthName = "febrero" },    // No vamos a tener en cuenta los bisiestos
+			new sMonth { monthNumDays = 31, monthName = "marzo" },
+			new sMonth { monthNumDays = 30, monthName = "abril" },
+			new sMonth { monthNumDays = 31, monthName = "mayo" },
+			new sMonth { monthNumDays = 30, monthName = "junio" },
+			new sMonth { monthNumDays = 31, monthName = "julio" },
+			new sMonth { monthNumDays = 31, monthName = "agosto" },
+			new sMonth { monthNumDays = 30, monthName = "septiembre" },
+			new sMonth { monthNumDays = 31, monthName = "octubre" },
+			new sMonth { monthNumDays = 30, monthName = "noviembre" },
+			new sMonth { monthNumDays = 31, monthName = "diciembre" },
+		};
         //----------------------------------------------------------------------
         #endregion
 
 
         #region Properties
+        //----------------------------------------------------------------------
         public static bool isActiveToolKeyboard { get; set; }
         public static int iContador { get; set; } = 0;
+        //----------------------------------------------------------------------
+		
+		#region Pulsada cualquier tecla o raton
+        //----------------------------------------------------------------------
+		// Input nuevo
+        // if (Keyboard.current.anyKey.isPressed || Mouse.current.IsPressed())
+        // if (Input.anyKeyDown)    // Este es con el Input antiguo
+        // Con el nuevo:
+        //----------------------------------------------------------------------
+		public static bool anyInput
+		{
+			get { return anyKey || mouseLeftButton || mouseRightButton || mouseMiddleButton; }
+		}
+        //----------------------------------------------------------------------
+		public static bool anyKey
+		{
+			get { return Keyboard.current.anyKey.isPressed }
+		}
+        //----------------------------------------------------------------------
+		public static bool mouseLeftButton
+		{
+			get { return Mouse.current.leftButton.isPressed; }
+		}
+        //----------------------------------------------------------------------
+		public static bool mouseRightButton
+		{
+			get { return Mouse.current.rightButton.isPressed; }
+		}
+        //----------------------------------------------------------------------
+		public static bool mouseMiddleButton
+		{
+			get { return Mouse.current.middleButton.isPressed; }
+		}
+        //----------------------------------------------------------------------
+		#endregion
+		
+        //----------------------------------------------------------------------
         #endregion
 
 
@@ -220,25 +258,6 @@ namespace TauriLand.Libreria
         }
         //----------------------------------------------------------------------
         #endregion
-
-
-		#region Pulsada cualquier tecla o raton
-        //----------------------------------------------------------------------
-		// Input nuevo
-        // if (Keyboard.current.anyKey.isPressed || Mouse.current.IsPressed())
-        // if (Input.anyKeyDown)    // Este es con el Input antiguo
-        // Con el nuevo:
-        //----------------------------------------------------------------------
-		public static bool anyInput()
-		{
-			return 
-				Keyboard.current.anyKey.isPressed ||
-				Mouse.current.leftButton.isPressed ||
-				Mouse.current.rightButton.isPressed ||
-				Mouse.current.middleButton.isPressed;
-        }
-        //----------------------------------------------------------------------
-		#endregion
 
 
         #region Salir
