@@ -140,6 +140,11 @@ namespace TauriLand.Libreria
 			get { return Keyboard.current.anyKey.isPressed; }
 		}
         //----------------------------------------------------------------------
+		public static bool anyMouseButtton
+		{
+			get { return mouseLeftButton || mouseRightButton || mouseMiddleButton; }
+		}
+        //----------------------------------------------------------------------
 		public static bool mouseLeftButton
 		{
 			get { return Mouse.current.leftButton.isPressed; }
