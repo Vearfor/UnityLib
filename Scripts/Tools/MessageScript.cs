@@ -22,6 +22,7 @@ namespace TauriLand.Libreria
         float timeOfLife = 0;
         string sTexto = "";
         TextMeshPro textMesh;
+        //----------------------------------------------------------------------
         #endregion
 
         #region MonoBehaviour
@@ -48,6 +49,7 @@ namespace TauriLand.Libreria
         {
             procUpdate(Time.deltaTime);
         }
+        //----------------------------------------------------------------------
         #endregion
 
         #region Metodos Propios
@@ -85,7 +87,6 @@ namespace TauriLand.Libreria
         //    gameObject.SetActive(false);
         //}
         //----------------------------------------------------------------------
-
         public void setTexto(string pText)
         {
             sTexto = pText;
@@ -96,6 +97,7 @@ namespace TauriLand.Libreria
         {
             timeOfLife = fTime;
         }
+        //----------------------------------------------------------------------
         #endregion
     }
 }
