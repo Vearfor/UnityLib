@@ -159,6 +159,42 @@ namespace TauriLand.Libreria
 			get { return Mouse.current.middleButton.isPressed; }
 		}
         //----------------------------------------------------------------------
+        //----------------------------------------------------------------------
+		// En el anterior, devolvemos true si esta presuionado:
+		// nos obligaría a un control de tecla repetida
+		// Vamos intentarlo si la tecla ha sido pulsada sin control de tecla
+		// repetida:
+        //----------------------------------------------------------------------
+		public static bool anyInputOne
+		{
+			get { return anyKeyOne || mouseLeftButtonOne || mouseRightButtonOne || mouseMiddleButtonOne; }
+		}
+        //----------------------------------------------------------------------
+		public static bool anyKeyOne
+		{
+			get { return Keyboard.current.anyKey.wasPressedThisFrame; }
+		}
+        //----------------------------------------------------------------------
+		public static bool anyMouseButttonOne
+		{
+			get { return mouseLeftButtonOne || mouseRightButtonOne || mouseMiddleButtonOne; }
+		}
+        //----------------------------------------------------------------------
+		public static bool mouseLeftButtonOne
+		{
+			get { return Mouse.current.leftButton.wasPressedThisFrame; }
+		}
+        //----------------------------------------------------------------------
+		public static bool mouseRightButtonOne
+		{
+			get { return Mouse.current.rightButton.wasPressedThisFrame; }
+		}
+        //----------------------------------------------------------------------
+		public static bool mouseMiddleButtonOne
+		{
+			get { return Mouse.current.middleButton.wasPressedThisFrame; }
+		}
+        //----------------------------------------------------------------------
 		#endregion
 		
         //----------------------------------------------------------------------

@@ -26,6 +26,15 @@ Guardo aqui el resto de las opciones:
     "com.tauriland.libreria": "https://github.com/Vearfor/UnityLib.git",
 	
 
+//
+// En Libreria.asmdef en cada proyecto ?
+//
+// Sugerido en TauriLand.Libreria
+// "UnityEngine.CoreModule",
+// "UnityEngine.UI",
+// "Unity.TextMeshPro",
+// "Unity.InputSystem"
+//
 
 
 No tengo un UnityLib.asmdef,
