@@ -678,7 +678,7 @@ namespace TauriLand.Libreria
         #endregion
 
 		#region Strings
-		public static buildNameFileWithOutSpace(string fileNameWithSpaces)
+		public static string buildNameFileWithOutSpace(string fileNameWithSpaces)
 		{
 			string fileFinalFileName = "";
 			string[] parts = fileNameWithSpaces.Split(";", StringSplitOptions.RemoveEmptyEntries);
