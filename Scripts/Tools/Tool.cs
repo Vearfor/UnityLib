@@ -359,6 +359,32 @@ namespace TauriLand.Libreria
         //----------------------------------------------------------------------
         #endregion
 
+		#region Ficheros y Directorios
+        //----------------------------------------------------------------------
+		// Crea directorio, si se puede
+        //----------------------------------------------------------------------
+        public static int CreateDirectory(string path)
+        {
+            if (!isActiveLog)
+                return 0;
+
+            try
+            {
+                if (!string.IsNullOrEmpty(path) && !Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                // throw new Exception(ex.Message, ex);
+                LogColor("Exception: CreateDirectory: [" + ex.Message + "]", Color.yellow);
+                return -1;
+            }
+            return 0;
+        }
+        //----------------------------------------------------------------------
+		#endregion
 
         #region Log a Fichero
         /*====================================================================*\
@@ -462,27 +488,6 @@ namespace TauriLand.Libreria
             {
                 logWriter.Close();
                 logWriter = null;
-            }
-            return 0;
-        }
-
-        static int CreateDirectory(string path)
-        {
-            if (!isActiveLog)
-                return 0;
-
-            try
-            {
-                if (!string.IsNullOrEmpty(path) && !Directory.Exists(path))
-                {
-                    Directory.CreateDirectory(path);
-                }
-            }
-            catch (System.Exception ex)
-            {
-                // throw new Exception(ex.Message, ex);
-                LogColor("Exception: CreateDirectory: [" + ex.Message + "]", Color.yellow);
-                return -1;
             }
             return 0;
         }
