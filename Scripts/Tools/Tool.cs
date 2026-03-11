@@ -365,9 +365,6 @@ namespace TauriLand.Libreria
         //----------------------------------------------------------------------
         public static int CreateDirectory(string path)
         {
-            if (!isActiveLog)
-                return 0;
-
             try
             {
                 if (!string.IsNullOrEmpty(path) && !Directory.Exists(path))
@@ -383,6 +380,11 @@ namespace TauriLand.Libreria
             }
             return 0;
         }
+		
+        //----------------------------------------------------------------------
+		// Separamos la existencia
+        //----------------------------------------------------------------------
+		
         //----------------------------------------------------------------------
 		#endregion
 
