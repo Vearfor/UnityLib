@@ -37,7 +37,7 @@ namespace TauriLand.Libreria
         // Limites de tiempo
         //----------------------------------------------------------------------
         static float limTeclaRepetida = .6f;     // 1 segundo o 0.6f de tecla repetida
-                                                 //----------------------------------------------------------------------
+		//----------------------------------------------------------------------
         static float teclaRepetida = 0f;
         //----------------------------------------------------------------------
         public static bool isRepeatedKey
@@ -709,6 +709,9 @@ namespace TauriLand.Libreria
 		#endregion
 		
 		#region Lanza Mensaje
+        //------------------------------------------------------------------
+		// Hay que asociar al gameObject del TextMeshProUGUI
+		// el MessageScript como componente.
         //------------------------------------------------------------------
 		public static void lanzaMensaje(TextMeshProUGUI textMensaje, string mensaje, Color color)
 		{

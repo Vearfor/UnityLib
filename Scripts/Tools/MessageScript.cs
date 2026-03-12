@@ -37,7 +37,7 @@ namespace TauriLand.Libreria
         //------------------------------------------------------------------
         // La corrutina
         //------------------------------------------------------------------
-        IEnumerator muestraMensaje(textMensaje)
+        IEnumerator muestraMensaje(TextMeshProUGUI textMensaje)
 		{
 			if(!mostrandoMensaje)
 			{
