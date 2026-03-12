@@ -725,6 +725,7 @@ namespace TauriLand.Libreria
 			if (textMensaje)
 			{
 				GameObject currentGameObject = textMensaje.gameObject;
+				currentGameObject.SetActive(true);
 				MessageScript message = currentGameObject.GetComponent<MessageScript>();
 				if (message)
 				{
