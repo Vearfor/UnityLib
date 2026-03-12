@@ -28,9 +28,9 @@ namespace TauriLand.Libreria
         \*----------------------------------------------------------------*/
 		public void lanzaMensaje(TextMeshProUGUI textMensaje)
 		{
-			if (textmensaje)
+			if (textMensaje)
 			{
-				StartCoroutine(muestraMensaje(textmensaje));
+				StartCoroutine(muestraMensaje(textMensaje));
 			}
 		}
 		
