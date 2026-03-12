@@ -30,15 +30,6 @@ namespace TauriLand.Libreria
         #endregion
 
 
-        #region Constantes
-        //----------------------------------------------------------------------
-        // Constantes
-        //----------------------------------------------------------------------
-        public static readonly float cEpsilon = 0.00001f;
-        //----------------------------------------------------------------------
-        #endregion
-
-
         #region Valores Tecla Repetida
         //----------------------------------------------------------------------
         // Statics Tecla Repetida
@@ -63,6 +54,9 @@ namespace TauriLand.Libreria
         #region Constantes
         //----------------------------------------------------------------------
         // Constantes
+        //----------------------------------------------------------------------
+        public static readonly float cEpsilon = 0.00001f;
+        //----------------------------------------------------------------------
         //----------------------------------------------------------------------
         // Pondremos nombres en espaniol:
         // No me deja poner como const, pero por ahora, para lo que quiero
@@ -117,10 +111,10 @@ namespace TauriLand.Libreria
 
 
         #region Properties
-        //----------------------------------------------------------------------
+        //------------------------------------------------------------------
         public static bool isActiveToolKeyboard { get; set; }
         public static int iContador { get; set; } = 0;
-        //----------------------------------------------------------------------
+        //------------------------------------------------------------------
 		
 		#region Pulsada cualquier tecla o raton
         //----------------------------------------------------------------------
@@ -200,6 +194,24 @@ namespace TauriLand.Libreria
         //----------------------------------------------------------------------
         #endregion
 
+
+        #region Variables (No Statics)
+        //------------------------------------------------------------------
+		bool mostrandoMensaje = false;
+		Color oldColorMensaje = Color.black;
+        //------------------------------------------------------------------
+        #endregion
+
+
+		#region Constructor
+        //------------------------------------------------------------------
+		// Constructor
+        //------------------------------------------------------------------
+		Tool()
+		{
+		}
+        //------------------------------------------------------------------
+		#endregion
 
         #region MonoBehaviour
         /*====================================================================*\
@@ -703,12 +715,9 @@ namespace TauriLand.Libreria
 		
 		#region Lanza Mensaje
         //------------------------------------------------------------------
-		static bool mostrandoMensaje = false;
-		static Color oldColorMensaje = Color.black;
-        //------------------------------------------------------------------
-		public static void lanzaMensaje(TextMeshProUGUI textMensaje, string mensaje, Color color)
+		public void lanzaMensaje(TextMeshProUGUI textMensaje, string mensaje, Color color)
 		{
-            LogColor(mensaje, color);
+            Tool.LogColor(mensaje, color);
 			if (textMensaje)
 			{
 				StartCoroutine(muestraMensaje(textMensaje));
