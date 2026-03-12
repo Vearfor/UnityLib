@@ -668,9 +668,9 @@ namespace TauriLand.Libreria
 
 
         #region Booleana en PlayerPrefs
-        //----------------------------------------------------------------------
+        //------------------------------------------------------------------
         // Booleana con PlayerPrefs
-        //----------------------------------------------------------------------
+        //------------------------------------------------------------------
         public static bool getBool(string key, bool defaultValue = false)
         {
             int value = PlayerPrefs.GetInt(key, defaultValue ? 1 : 0);
@@ -682,9 +682,11 @@ namespace TauriLand.Libreria
             int valueInt = value ? 1 : 0;
             PlayerPrefs.SetInt(key, valueInt);
         }
+        //------------------------------------------------------------------
         #endregion
 
 		#region Strings
+        //------------------------------------------------------------------
 		public static string buildNameFileWithOutSpace(string fileNameWithSpaces)
 		{
 			string fileFinalFileName = "";
@@ -696,12 +698,14 @@ namespace TauriLand.Libreria
 			}
 			return fileFinalFileName;
 		}
-        //----------------------------------------------------------------------
+        //------------------------------------------------------------------
 		#endregion
 		
 		#region Lanza Mensaje
+        //------------------------------------------------------------------
 		static bool mostrandoMensaje = false;
-		static Color oldColorMensaje = Color.
+		static Color oldColorMensaje = Color.black;
+        //------------------------------------------------------------------
 		public static void lanzaMensaje(TextMeshProUGUI textMensaje, string mensaje, Color color)
 		{
             LogColor(mensaje, color);
@@ -735,7 +739,7 @@ namespace TauriLand.Libreria
 				mostrandoMensaje = false;
 			}
 		}
-        //----------------------------------------------------------------------
+        //------------------------------------------------------------------
 		#endregion
 
         #endregion
