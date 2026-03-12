@@ -197,8 +197,6 @@ namespace TauriLand.Libreria
 
         #region Variables (No Statics)
         //------------------------------------------------------------------
-		bool mostrandoMensaje = false;
-		Color oldColorMensaje = Color.black;
         //------------------------------------------------------------------
         #endregion
 
@@ -207,9 +205,6 @@ namespace TauriLand.Libreria
         //------------------------------------------------------------------
 		// Constructor
         //------------------------------------------------------------------
-		Tool()
-		{
-		}
         //------------------------------------------------------------------
 		#endregion
 
@@ -715,39 +710,20 @@ namespace TauriLand.Libreria
 		
 		#region Lanza Mensaje
         //------------------------------------------------------------------
-		// public void lanzaMensaje(TextMeshProUGUI textMensaje, string mensaje, Color color)
-		// {
-            // Tool.LogColor(mensaje, color);
-			// if (textMensaje)
-			// {
-				// StartCoroutine(muestraMensaje(textMensaje));
-			// }
-		// }
-		
-		// IEnumerator muestraMensaje(TextMeshProUGUI textMensaje)
-		// {
-			// if (!mostrandoMensaje)
-			// {
-				// mostrandoMensaje = true;
-				// float alphaDecrease = 0.1f;
-				// textMensaje.gameObject.SetActive(true);
-				// oldColorMensaje = textMensaje.color;
-				// Color colorMensaje = textMensaje.color;
-				// while (textMensaje.color.a - alphaDecrease > 0)
-				// {
-					// colorMensaje.a -= alphaDecrease;
-					// textMensaje.color = colorMensaje;
-
-					// // No se debe de usar Sleep, detiene le hilo principal
-					// // Por narices, hay que utilizar corrutinas
-					// // Thread.Sleep(100);
-					// yield return new WaitForSeconds(0.1f);
-				// }
-				// textMensaje.gameObject.SetActive(false);
-				// textMensaje.color = oldColorMensaje;
-				// mostrandoMensaje = false;
-			// }
-		// }
+		public static void lanzaMensaje(TextMeshProUGUI textMensaje, string mensaje, Color color)
+		{
+            LogColor(mensaje, color);
+			if (textMensaje)
+			{
+				GameObject currentGameObject = textMensaje.gameObject;
+				MessageScript message = currentGameObject.GetComponent<MessageScript>();
+				if (message)
+				{
+					textMensaje.text = mensaje;
+					message.lanzaMensaje(textMensaje);
+				}
+			}
+		}
         //------------------------------------------------------------------
 		#endregion
 
