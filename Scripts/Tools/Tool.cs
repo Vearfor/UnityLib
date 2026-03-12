@@ -729,8 +729,7 @@ namespace TauriLand.Libreria
 				if (message)
 				{
 					textMensaje.text = mensaje;
-					if (color)
-						textMensaje.color = color;
+					textMensaje.color = color;
 					message.lanzaMensaje(textMensaje, seconds);
 				}
 			}
