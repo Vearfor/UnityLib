@@ -696,8 +696,48 @@ namespace TauriLand.Libreria
 			}
 			return fileFinalFileName;
 		}
-		#endregion
         //----------------------------------------------------------------------
+		#endregion
+		
+		#region Lanza Mensaje
+		static bool mostrandoMensaje = false;
+		static Color oldColorMensaje = Color.
+		public static void lanzaMensaje(TextMeshProUGUI textMensaje, string mensaje, Color color)
+		{
+            LogColor(mensaje, color);
+			if (textMensaje)
+			{
+				StartCoroutine(muestraMensaje(textMensaje));
+			}
+		}
+		
+		IEnumerator muestraMensaje(TextMeshProUGUI textMensaje)
+		{
+			if (!mostrandoMensaje)
+			{
+				mostrandoMensaje = true;
+				float alphaDecrease = 0.1f;
+				textMensaje.gameObject.SetActive(true);
+				oldColorMensaje = textMensaje.color;
+				Color colorMensaje = textMensaje.color;
+				while (textMensaje.color.a - alphaDecrease > 0)
+				{
+					colorMensaje.a -= alphaDecrease;
+					textMensaje.color = colorMensaje;
+
+					// No se debe de usar Sleep, detiene le hilo principal
+					// Por narices, hay que utilizar corrutinas
+					// Thread.Sleep(100);
+					yield return new WaitForSeconds(0.1f);
+				}
+				textMensaje.gameObject.SetActive(false);
+				textMensaje.color = oldColorMensaje;
+				mostrandoMensaje = false;
+			}
+		}
+        //----------------------------------------------------------------------
+		#endregion
+
         #endregion
 
     }
