@@ -209,6 +209,7 @@ namespace TauriLand.Libreria
         //------------------------------------------------------------------
 		#endregion
 
+
         #region MonoBehaviour
         /*====================================================================*\
         |* Funciones MonoBehaviour
@@ -367,6 +368,7 @@ namespace TauriLand.Libreria
         //----------------------------------------------------------------------
         #endregion
 
+
 		#region Ficheros y Directorios
         //----------------------------------------------------------------------
 		// Crea directorio, si se puede
@@ -395,6 +397,7 @@ namespace TauriLand.Libreria
 		
         //----------------------------------------------------------------------
 		#endregion
+
 
         #region Log a Fichero
         /*====================================================================*\
@@ -693,6 +696,7 @@ namespace TauriLand.Libreria
         //------------------------------------------------------------------
         #endregion
 
+
 		#region Strings
         //------------------------------------------------------------------
 		public static string buildNameFileWithOutSpace(string fileNameWithSpaces)
@@ -708,13 +712,14 @@ namespace TauriLand.Libreria
 		}
         //------------------------------------------------------------------
 		#endregion
-		
+	
+	
 		#region Lanza Mensaje
         //------------------------------------------------------------------
 		// Hay que asociar al gameObject del TextMeshProUGUI
 		// el MessageScript como componente.
         //------------------------------------------------------------------
-		public static void lanzaMensaje(TextMeshProUGUI textMensaje, string mensaje, Color color)
+		public static void lanzaMensaje(TextMeshProUGUI textMensaje, string mensaje, Color color, float seconds)
 		{
             LogColor(mensaje, color);
 			if (textMensaje)
@@ -724,7 +729,7 @@ namespace TauriLand.Libreria
 				if (message)
 				{
 					textMensaje.text = mensaje;
-					message.lanzaMensaje(textMensaje);
+					message.lanzaMensaje(textMensaje, seconds);
 				}
 			}
 		}

@@ -26,18 +26,18 @@ namespace TauriLand.Libreria
         /*----------------------------------------------------------------*\
         |* Metodos / Funciones Propios
         \*----------------------------------------------------------------*/
-		public void lanzaMensaje(TextMeshProUGUI textMensaje)
+		public void lanzaMensaje(TextMeshProUGUI textMensaje, float seconds)
 		{
 			if (textMensaje)
 			{
-				StartCoroutine(muestraMensaje(textMensaje));
+				StartCoroutine(muestraMensaje(textMensaje, seconds));
 			}
 		}
 		
         //------------------------------------------------------------------
         // La corrutina
         //------------------------------------------------------------------
-        IEnumerator muestraMensaje(TextMeshProUGUI textMensaje)
+        IEnumerator muestraMensaje(TextMeshProUGUI textMensaje, float seconds)
 		{
 			if(!mostrandoMensaje)
 			{
@@ -46,6 +46,7 @@ namespace TauriLand.Libreria
 				Color newColorMensaje = textMensaje.color;
 				float alphaDecrease = 0.1f;
 				textMensaje.gameObject.SetActive(true);
+				yield return new WaitForSeconds(seconds);
 				while (textMensaje.color.a - alphaDecrease > 0)
 				{
 					newColorMensaje.a -= alphaDecrease;
