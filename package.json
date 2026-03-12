@@ -1,6 +1,6 @@
 {
   "name": "com.tauriland.libreria",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "displayName": "Libreria Comun",
   "description": "Funciones, utilidades y clases compartidas para varios proyectos Unity.",
   "unity": "2021.3",
