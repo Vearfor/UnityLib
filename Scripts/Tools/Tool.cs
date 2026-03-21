@@ -641,7 +641,7 @@ namespace TauriLand.Libreria
         // - si no existe lo crea.
         // + Tiene que encontrarse como hijo del gameObject actual.
         //----------------------------------------------------------------------
-        public static GameObject createObject(Transform transform, string sObjeto)
+        public static GameObject findOrCreateObject(Transform transform, string sObjeto)
         {
             GameObject go = null;
             // Comprobamos si existe:
