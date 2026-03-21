@@ -702,7 +702,7 @@ namespace TauriLand.Libreria
 		public static string buildNameFileWithOutSpace(string fileNameWithSpaces)
 		{
 			string fileFinalFileName = "";
-			string[] parts = fileNameWithSpaces.Split(";", StringSplitOptions.RemoveEmptyEntries);
+			string[] parts = fileNameWithSpaces.Split(" ", StringSplitOptions.RemoveEmptyEntries);
 			fileFinalFileName = parts[0];
 			for(int i=1; i<parts.Length; i++)
 			{
